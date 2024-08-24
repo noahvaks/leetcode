@@ -1,0 +1,30 @@
+58. Length of Last Word
+
+python solution (inneficient): 
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        #python can go backwards hehe
+        #python can split strings by a character
+        #python can clean string inputs
+        return len(s.strip().split(" ")[-1])
+
+c++ solution (based on python method):
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int j = s.size()-1;
+        int count = 0;
+
+        while (s[j] == ' ') { // strip back
+            s.erase(j);
+            j--;
+        }
+        while (j >= 0 && s[j] != ' ') { // count backwards
+            count++;
+            j--;
+        }
+        return count;
+    }
+};
