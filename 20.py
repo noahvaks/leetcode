@@ -3,6 +3,36 @@
 #Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 #An input string is valid if:
+
+#Open brackets must be closed by the same type of brackets.
+#Open brackets must be closed in the correct order.
+#Every close bracket has a corresponding open bracket of the same type.
+
+#my current code is convoluted. I'm going to turn my checking statements into a hash map.
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        stack = []
+        bracketMap = { "(":")",
+        "[":"]",
+        "{":"}" }
+
+        for i in range(len(s)):
+            if s[i] in bracketMap:
+                stack.append(s[i])
+            if s[i] in bracketMap.values():
+                if len(stack) > 0 and s[i] == bracketMap[stack[-1]]: 
+                    stack.pop()
+                else: return False
+        
+        return (len(stack) == 0)
+
+'''
+
+#Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+#An input string is valid if:
 #Open brackets must be closed by the same type of brackets.
 
 #a closing bracket with not open bracket is invalid
@@ -46,5 +76,4 @@ class Solution:
                 del c[-1]
             
         return (len(c) == 0)
-
-        
+'''
